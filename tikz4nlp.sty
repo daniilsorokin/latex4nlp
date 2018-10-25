@@ -1,0 +1,235 @@
+\usepackage{tikz}
+\usetikzlibrary{shapes,matrix,positioning,decorations.pathreplacing,arrows}
+
+\definecolor{cb_lightgray}{HTML}{ECE7F2}
+\definecolor{cb_gray}{HTML}{a6a2aa}
+\definecolor{cb_lightblue}{HTML}{a6cee3}
+\definecolor{cb_blue}{HTML}{A6BDDB}
+\definecolor{cb_darkblue}{HTML}{2B8CBE}
+\definecolor{cb_purple}{HTML}{88419d}
+\colorlet{cb_lighpurple}{cb_purple!80}
+\definecolor{cb_lightgreen}{HTML}{b2df8a}
+\definecolor{cb_darkgreen}{HTML}{33a02c}
+\definecolor{cb_lightred}{HTML}{f94740}
+\definecolor{cb_red}{HTML}{de2d26}
+\definecolor{cb_tudred}{RGB}{185,15,34}
+\definecolor{cb_darkred}{HTML}{7f0715}
+\definecolor{cb_lightyellow}{HTML}{fecc5c}
+\definecolor{cb_yellow}{HTML}{fd8d3c}
+\definecolor{cb_darkyellow}{HTML}{f03b20}
+
+\tikzset{%
+%%% General %%%
+every label/.append style={font=\Large},
+  >=latex,
+plain/.style={
+  draw=none,
+  fill=none,
+  },
+textnode/.style={
+  draw=none,
+  fill=none,
+  font=\Large  
+  },
+inputtextnode/.style={
+  textnode,
+  minimum height=24pt,
+  align=center,
+  draw, 
+  rounded rectangle
+},  
+%%% Semantic graphs %%%
+graphnode/.style={
+    draw,
+	inner sep=0.2cm,
+    % font=\large,
+    text=black,
+    fill=none,
+    line width=0.25mm, 
+},
+graph_variable/.style={
+    graphnode,
+    draw=cb_darkblue,
+    circle
+},
+graph_entity/.style={
+    graphnode,
+    rectangle,
+    inner sep=1ex,
+    draw=cb_darkgreen,
+    rounded corners=1ex,
+    execute at begin node=\sffamily\small 
+},
+graph_modifier/.style={
+    graphnode,
+    draw=cb_darkyellow,
+    rounded rectangle
+},
+missing_graph_node/.style={
+    draw=none, 
+	fill=none,    
+    scale=3,
+    text height=10pt,
+    execute at begin node=\color{black}$\vdots$
+  },
+semanticgraph/.style={ 
+  matrix of nodes,
+  nodes={graphnode},
+  nodes in empty cells,
+  column sep=4cm,
+  row sep=0.5cm
+  },
+iter_arrow/.style={
+  >=stealth,
+  line width=1mm,
+  dashed,
+  font=\Large 
+  },  
+rel_arrow/.style={
+  font=\large,
+  line width=0.3mm,
+  },
+text_above_arrow/.style={
+  cb_darkblue,
+  draw=cb_lightblue,
+  line width=0.15mm,
+  inner sep=0.75ex,
+  font=\small\scshape,
+  fill=cb_lightgray!20,
+  },       
+%%% NN %%%
+layerlabel/.style={
+  draw=none,
+  fill=none,
+  align=right, 
+  text width=0.5cm,
+  font=\large,
+  },
+node/.style={
+		draw,
+		inner sep=0pt,
+		outer sep=0pt,
+		text depth=0em
+},
+layer/.style={
+    node,
+    rectangle,
+    line width=0.3mm,  
+	fill=cb_lightgray,
+	minimum size=4.5ex, 
+	inner sep=0.3em,
+	text centered
+},
+dense_layer/.style={
+	layer,
+	inner sep=0.075cm,
+	column sep={between origins, 1.25em},
+	minimum size=1em,
+    row sep=0.375ex,
+	matrix of nodes,
+	nodes in empty cells,
+	nodes={
+		node,
+		circle,
+		fill=white,
+		font=\tiny,
+		outer sep=0.15em,
+		minimum size=1em
+	}
+},
+cnn_layer/.style={
+	dense_layer,
+	inner sep=0.05cm,	
+	ampersand replacement=\&,	
+	column sep={between origins, 1.5em},	
+	nodes={
+		minimum size=1.25em,
+		outer sep=0.4em,		
+	}
+},
+operation_node/.style={
+    draw,
+    circle,
+	fill=white,
+	font=\large
+},
+missing/.style={
+    draw=none, 
+	fill=none,
+    font=\large,
+    execute at begin node=\color{black}$\ldots$
+  },
+vmissing/.style={
+    draw=none, 
+	fill=none, 
+	anchor=center,
+%	minimum height=4ex,
+%	outer sep=2em,
+    execute at begin node=\color{black}$\vdots$
+  },  
+input_words/.style={ 
+  matrix of nodes,
+  nodes in empty cells,
+  column sep=1.5em,
+  row sep=0pt,
+  nodes={
+    node,
+    rectangle,
+    minimum size=2em,
+    inner sep=0.05cm,
+    font=\normalsize,
+	fill=white,
+	text=black,
+    line width=0.3mm
+  }  
+},  
+input_token_element/.style={
+    draw=black,
+    rectangle,
+	minimum size=2em,
+    inner sep=0.05cm,
+    font=\normalsize,
+	fill=white,
+	text=black,
+    line width=0.3mm
+},
+input_tokens/.style={ 
+  input_words,
+  nodes={
+	fill=cb_blue,
+	text=black,
+  }  
+},
+layer_connection/.style={
+  line width=0.3mm,
+  },
+ %%% Graph steps %%%
+genstepnode/.style={
+  inputtextnode,
+  minimum height=20pt,
+  font=\large
+},
+%%% Blocks %%%
+block_node/.style={
+    draw=black,
+    rectangle,
+	fill=white,
+	font=\large
+},
+block_line/.style={
+    draw=black,
+	line width=1mm,
+},
+block_if_node/.style={
+    draw=black,
+    diamond,
+	fill=white,
+	font=\large
+},
+block_leaf_node/.style={
+    draw=black,
+    ellipse,
+	fill=white,    
+	font=\large
+},
+}

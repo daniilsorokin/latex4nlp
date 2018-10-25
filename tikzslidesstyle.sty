@@ -1,0 +1,12 @@
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\tikzset{every picture/.style={/utils/exec={\sffamily}}}
+\pgfplotsset{
+ legend style={draw=none,anchor=north,legend columns=-1,column sep=1em},
+ every node near coord/.append style={font=\footnotesize},
+ tick style={draw=none},
+ x tick label style={font=\small,rotate=0,anchor=north,text width=1.5cm, align=center},
+ y tick label style={font=\small},
+ every axis plot/.append style={thick},
+}
