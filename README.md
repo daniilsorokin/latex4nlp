@@ -6,7 +6,9 @@ Disclaimer:
 
 
 ### Author:
-  * Daniil Sorokin, \<lastname\>@ukp.informatik.tu-darmstadt.de
+  * Daniil Sorokin, \<lastname\>@ukp.informatik.tu-darmstadt.de, [personal page](https://www.informatik.tu-darmstadt.de/ukp/ukp_home/staff_ukp/detailseite_mitarbeiter_1_41984.en.jsp)
+  * Twitter: @daniilmagpie
+  * https://www.informatik.tu-darmstadt.de/ukp/
 
 
 ### License:
